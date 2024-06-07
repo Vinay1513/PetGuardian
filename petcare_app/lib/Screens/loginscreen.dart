@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 15.0),
+                padding: const EdgeInsets.only(top: 10.0, bottom: 10),
                 child: Text(
                   "Login",
                   style: GoogleFonts.poppins(
@@ -58,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              Image.asset("assets/images/Group12.png"),
+              Image.asset("assets/images/BrandmarkLogo.png"),
               const SizedBox(height: 10),
               Container(
                 height: 170,
@@ -284,7 +284,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(left: 40),
+                        margin: const EdgeInsets.only(left: 50),
                         height: 60,
                         width: 327,
                         child: Column(
