@@ -17,6 +17,14 @@ class _GroomingScreenState extends State<GroomingScreen> {
     "assets/images/teeth.png",
     "assets/images/skin.png"
   ];
+  List<String> imgnm = [
+    "Bathing & Drying",
+    "Hair Triming",
+    "Nail Trimming",
+    "Ear Cleaning",
+    "teeth cleaning",
+    "skin checkup"
+  ];
   TextEditingController searchTextEditingController = TextEditingController();
 
   Widget _buildHeader() {
@@ -210,11 +218,30 @@ class _GroomingScreenState extends State<GroomingScreen> {
                     height: 169,
                     width: 154,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blueAccent),
+                      color: const Color.fromRGBO(255, 255, 247, 1),
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Image.asset(
-                      imgs[index],
-                      fit: BoxFit.cover,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 16.0, left: 16),
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            imgs[index],
+                            fit: BoxFit.cover,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 20.0),
+                            child: Text(
+                              imgnm[index],
+                              style: GoogleFonts.poppins(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: const Color.fromRGBO(0, 0, 0, 1),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   );
                 },
