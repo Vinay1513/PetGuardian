@@ -35,7 +35,7 @@ class _VeterenaryScreenState extends State<VeterenaryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(251, 248, 247, 247),
+      backgroundColor: Color.fromRGBO(245, 245, 247, 1),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
