@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:petcare_app/Screens/grooming.dart';
+import 'package:petcare_app/Screens/notificationscreen.dart';
+import 'package:petcare_app/Screens/shop.dart';
+import 'package:petcare_app/Screens/trainingscreen.dart';
+import 'package:petcare_app/Screens/veterenaryscreen.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({super.key});
@@ -21,6 +26,12 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     "Pet Store",
     "Training"
   ];
+  final List<WidgetBuilder> detailPageBuilders = [
+    (context) => const VeterenaryScreen(),
+    (context) => const GroomingScreen(),
+    (context) => const ShopScreen(),
+    (context) => const TrainingScreen(),
+  ];
   TextEditingController searchTextEditingController = TextEditingController();
 
   @override
@@ -31,49 +42,56 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 30.0, top: 50),
-                  child: Image.asset("assets/images/image.png"),
-                ),
-                const SizedBox(width: 5),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40.0),
-                      child: Text(
-                        "Hello, Sarah",
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: const Color.fromRGBO(31, 32, 41, 1),
-                        ),
+            Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 30.0, top: 50),
+                child: Image.asset("assets/images/image.png"),
+              ),
+              const SizedBox(width: 5),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 40.0),
+                    child: Text(
+                      "Hello, Sarah",
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: const Color.fromRGBO(31, 32, 41, 1),
                       ),
                     ),
-                    const SizedBox(height: 5),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 9.0),
-                      child: Text(
-                        "Good Morning!",
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: const Color.fromARGB(255, 135, 135, 138),
-                        ),
+                  ),
+                  const SizedBox(height: 5),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 9.0),
+                    child: Text(
+                      "Good Morning!",
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: const Color.fromARGB(255, 135, 135, 138),
                       ),
                     ),
-                  ],
-                ),
-                const Spacer(),
-                Container(
+                  ),
+                ],
+              ),
+              const Spacer(),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const NotificationScreen(),
+                    ),
+                  );
+                },
+                child: Container(
                   margin: const EdgeInsets.only(top: 40, right: 70),
                   child: const Icon(Icons.notifications_none_outlined),
                 ),
-              ],
-            ),
+              )
+            ]),
             const SizedBox(height: 10),
             Container(
               margin: const EdgeInsets.only(left: 40),
@@ -188,39 +206,47 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 scrollDirection: Axis.horizontal,
                 itemCount: images.length,
                 itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 10),
-                        width: 80,
-                        height: 80,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                            child: Image.asset(
-                          images[index],
-                          height: 80,
-                          width: 80,
-                          fit: BoxFit.cover,
-                        )),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10.0, bottom: 30),
-                        child: Text(
-                          title[index],
-                          style: GoogleFonts.poppins(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                              color: const Color.fromRGBO(0, 0, 0, 1)),
-                        ),
-                      )
-                    ],
-                  );
+                  return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: detailPageBuilders[index]),
+                        );
+                      },
+                      child: Column(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
+                            width: 80,
+                            height: 80,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.white,
+                            ),
+                            child: Center(
+                                child: Image.asset(
+                              images[index],
+                              height: 80,
+                              width: 80,
+                              fit: BoxFit.cover,
+                            )),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(right: 10.0, bottom: 30),
+                            child: Text(
+                              title[index],
+                              style: GoogleFonts.poppins(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color.fromRGBO(0, 0, 0, 1)),
+                            ),
+                          )
+                        ],
+                      ));
                 },
               ),
             ),
@@ -387,42 +413,61 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           children: <Widget>[
             Container(
               height: 82.0,
-              child: const Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Icon(
-                        Icons.home,
-                        color: Color.fromRGBO(245, 146, 69, 1),
-                      ),
-                      Text(
-                        "Home",
-                        style: TextStyle(fontSize: 12),
-                      ),
-                    ],
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const DashBoardScreen()),
+                      );
+                    },
+                    child: const Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Icon(
+                          Icons.home,
+                          color: Color.fromRGBO(245, 146, 69, 1),
+                        ),
+                        Text(
+                          "Home",
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
                   ),
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Icon(
-                        Icons.favorite_outline,
-                        color: const Color.fromARGB(255, 135, 135, 138),
-                      ),
-                      Text(
-                        "Favorites",
-                        style: TextStyle(fontSize: 12),
-                      ),
-                    ],
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const VeterenaryScreen()),
+                      );
+                    },
+                    child: const Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Icon(
+                          Icons.favorite_outline,
+                          color: Color.fromARGB(255, 135, 135, 138),
+                        ),
+                        Text(
+                          "Favorites",
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
                   ),
-                  SizedBox(width: 48),
-                  Column(
+                  const SizedBox(
+                      width: 48), // This is the space for the floating button
+                  const Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Icon(
                         Icons.access_time,
-                        color: const Color.fromARGB(255, 135, 135, 138),
+                        color: Color.fromARGB(255, 135, 135, 138),
                       ),
                       Text(
                         "Time",
@@ -430,12 +475,13 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                       ),
                     ],
                   ),
-                  Column(
+
+                  const Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Icon(
                         Icons.person,
-                        color: const Color.fromARGB(255, 135, 135, 138),
+                        color: Color.fromARGB(255, 135, 135, 138),
                       ),
                       Text(
                         "Profile",
@@ -446,34 +492,41 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 ],
               ),
             ),
-            const Positioned(
+            Positioned(
               bottom: 20,
               left: 0,
               right: 0,
               child: CircleAvatar(
                 radius: 30.0,
-                backgroundColor: Color.fromRGBO(245, 146, 69, 1),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.shopping_cart, color: Colors.white),
-                    Text(
-                      "Shop",
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
+                backgroundColor: const Color.fromRGBO(245, 146, 69, 1),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ShopScreen()),
+                    );
+                  },
+                  child: const Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.shopping_cart, color: Colors.white),
+                      Text(
+                        "Shop",
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
           ],
         ),
       ),
-      floatingActionButton:
-          const SizedBox.shrink(), // Hide the floating action button
+      floatingActionButton: const SizedBox.shrink(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }

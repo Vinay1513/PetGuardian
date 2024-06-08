@@ -54,17 +54,21 @@ class _TrainingScreenState extends State<TrainingScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        // Back Button
-        Container(
-          margin: EdgeInsets.only(left: 40, top: 50),
-          decoration: BoxDecoration(
-            color: Color.fromRGBO(245, 146, 69, 1),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          height: 26,
-          width: 26,
-          child: Center(
-            child: Icon(Icons.arrow_back, color: Colors.white, size: 16),
+        GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Container(
+            margin: EdgeInsets.only(left: 40, top: 50),
+            decoration: BoxDecoration(
+              color: Color.fromRGBO(245, 146, 69, 1),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            height: 26,
+            width: 26,
+            child: Center(
+              child: Icon(Icons.arrow_back, color: Colors.white, size: 16),
+            ),
           ),
         ),
         // Title
@@ -109,18 +113,13 @@ class _TrainingScreenState extends State<TrainingScreen> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Container(
-                          width: 90,
+                        Image.asset(
+                          imgs[index],
                           height: 94,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(imgs[index]),
-                              fit: BoxFit.cover,
-                            ),
-                            borderRadius: BorderRadius.circular(8),
-                            color: Colors.grey[300],
-                          ),
+                          width: 90,
+                          fit: BoxFit.fill,
                         ),
                         SizedBox(width: 20),
                         Expanded(

@@ -13,17 +13,21 @@ class _NotificationScreenState extends State<NotificationScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        // Back Button
-        Container(
-          margin: const EdgeInsets.only(left: 40, top: 50),
-          decoration: BoxDecoration(
-            color: const Color.fromRGBO(245, 146, 69, 1),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          height: 26,
-          width: 26,
-          child: const Center(
-            child: Icon(Icons.arrow_back_ios_new),
+        GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Container(
+            margin: const EdgeInsets.only(left: 40, top: 50),
+            decoration: BoxDecoration(
+              color: const Color.fromRGBO(245, 146, 69, 1),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            height: 26,
+            width: 26,
+            child: const Center(
+              child: Icon(Icons.arrow_back_ios_new),
+            ),
           ),
         ),
         // Title

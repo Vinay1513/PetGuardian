@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:petcare_app/Screens/dashboardscreen.dart';
+import 'package:petcare_app/Screens/grooming.dart';
+import 'package:petcare_app/Screens/shop.dart';
+import 'package:petcare_app/Screens/trainingscreen.dart';
+//import 'package:petcare_app/Screens/veterenaryscreen.dart';
 
 class VeterenaryScreen extends StatefulWidget {
   const VeterenaryScreen({super.key});
@@ -25,6 +30,13 @@ class _VeterenaryScreenState extends State<VeterenaryScreen> {
     "assets/images/Anna.png",
     "assets/images/dr_vernon.png"
   ];
+  final List<WidgetBuilder> detailPageBuilders = [
+    (context) => const VeterenaryScreen(),
+    (context) => const GroomingScreen(),
+    (context) => const ShopScreen(),
+    (context) => const TrainingScreen(),
+    (context) => const DashBoardScreen()
+  ];
   final List<String> title2 = ["Dr. Anna Johanson", "Dr. Vernon Chwe"];
   final List<String> subtitle = ["Veterinary Behavioral", "Veterinary Surgery"];
   final List<IconData> icon = [Icons.star_border, Icons.location_on_outlined];
@@ -43,12 +55,17 @@ class _VeterenaryScreenState extends State<VeterenaryScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Container(
-                  margin: EdgeInsets.only(top: 50, left: 40),
-                  height: 23,
-                  child: Icon(
-                    Icons.location_on_outlined,
-                    color: const Color.fromRGBO(245, 146, 69, 1),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(top: 50, left: 40),
+                    height: 23,
+                    child: Icon(
+                      Icons.location_on_outlined,
+                      color: const Color.fromRGBO(245, 146, 69, 1),
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -356,42 +373,61 @@ class _VeterenaryScreenState extends State<VeterenaryScreen> {
           children: <Widget>[
             Container(
               height: 82.0,
-              child: const Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Icon(
-                        Icons.home,
-                        color: const Color.fromARGB(255, 135, 135, 138),
-                      ),
-                      Text(
-                        "Home",
-                        style: TextStyle(fontSize: 12),
-                      ),
-                    ],
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const DashBoardScreen()),
+                      );
+                    },
+                    child: const Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Icon(
+                          Icons.home,
+                          color: Color.fromRGBO(245, 146, 69, 1),
+                        ),
+                        Text(
+                          "Home",
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
                   ),
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Icon(
-                        Icons.favorite_outline,
-                        color: Color.fromRGBO(245, 146, 69, 1),
-                      ),
-                      Text(
-                        "Favorites",
-                        style: TextStyle(fontSize: 12),
-                      ),
-                    ],
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const VeterenaryScreen()),
+                      );
+                    },
+                    child: const Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Icon(
+                          Icons.favorite_outline,
+                          color: Color.fromARGB(255, 135, 135, 138),
+                        ),
+                        Text(
+                          "Favorites",
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
                   ),
-                  SizedBox(width: 48),
-                  Column(
+                  const SizedBox(
+                      width: 48), // This is the space for the floating button
+                  const Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Icon(
                         Icons.access_time,
-                        color: const Color.fromARGB(255, 135, 135, 138),
+                        color: Color.fromARGB(255, 135, 135, 138),
                       ),
                       Text(
                         "Time",
@@ -399,12 +435,13 @@ class _VeterenaryScreenState extends State<VeterenaryScreen> {
                       ),
                     ],
                   ),
-                  Column(
+
+                  const Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Icon(
                         Icons.person,
-                        color: const Color.fromARGB(255, 135, 135, 138),
+                        color: Color.fromARGB(255, 135, 135, 138),
                       ),
                       Text(
                         "Profile",
@@ -415,34 +452,41 @@ class _VeterenaryScreenState extends State<VeterenaryScreen> {
                 ],
               ),
             ),
-            const Positioned(
+            Positioned(
               bottom: 20,
               left: 0,
               right: 0,
               child: CircleAvatar(
                 radius: 30.0,
-                backgroundColor: Color.fromRGBO(245, 146, 69, 1),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.shopping_cart, color: Colors.white),
-                    Text(
-                      "Shop",
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
+                backgroundColor: const Color.fromRGBO(245, 146, 69, 1),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ShopScreen()),
+                    );
+                  },
+                  child: const Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.shopping_cart, color: Colors.white),
+                      Text(
+                        "Shop",
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
           ],
         ),
       ),
-      floatingActionButton:
-          const SizedBox.shrink(), // Hide the floating action button
+      floatingActionButton: const SizedBox.shrink(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
