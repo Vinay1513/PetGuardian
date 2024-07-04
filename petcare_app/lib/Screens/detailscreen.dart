@@ -61,18 +61,23 @@ class _DetailDoctorScreenState extends State<DetailDoctorScreen> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         // Back Button
-        Container(
-          margin: const EdgeInsets.only(left: 40, top: 50),
-          decoration: BoxDecoration(
-            color: const Color.fromRGBO(255, 255, 255, 1),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          height: 26,
-          width: 26,
-          child: const Center(
-            child: Icon(
-              Icons.arrow_back_ios_new,
-              color: const Color.fromRGBO(245, 146, 69, 1),
+        GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Container(
+            margin: const EdgeInsets.only(left: 40, top: 50),
+            decoration: BoxDecoration(
+              color: const Color.fromRGBO(255, 255, 255, 1),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            height: 26,
+            width: 26,
+            child: const Center(
+              child: Icon(
+                Icons.arrow_back_ios_new,
+                color: const Color.fromRGBO(245, 146, 69, 1),
+              ),
             ),
           ),
         ),
@@ -106,9 +111,9 @@ class _DetailDoctorScreenState extends State<DetailDoctorScreen> {
                 Container(
                   margin: EdgeInsets.only(left: 10, top: 9),
                   height: 150,
-                  width: 480,
+                  width: 350,
                   child: Image.asset("assets/images/Anna2.png",
-                      height: 150, width: 480, fit: BoxFit.fill),
+                      height: 150, width: 350, fit: BoxFit.contain),
                 )
               ],
             ),

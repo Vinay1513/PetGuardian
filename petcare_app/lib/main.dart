@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:petcare_app/Screens/dashboardscreen.dart';
-//import 'package:petcare_app/Screens/dashboardscreen.dart';
-//import 'package:petcare_app/Screens/spalshscreen.dart';
-//import 'package:petcare_app/Screens/grooming.dart';
-//import 'package:petcare_app/Screens/shop.dart';
-//import 'package:petcare_app/Screens/trainingscreen.dart';
+//import 'package:petcare_app/Screens/detailscreen.dart';
+import 'package:petcare_app/Screens/spalshscreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +14,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'PETGUARDIAN',
-      home: DashBoardScreen(),
+      home: SplashScreen(),
     );
   }
 }

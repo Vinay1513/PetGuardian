@@ -185,7 +185,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 ),
                 const Spacer(),
                 Padding(
-                  padding: const EdgeInsets.only(right: 110.0),
+                  padding: const EdgeInsets.only(right: 70.0),
                   child: Text(
                     "See All",
                     style: GoogleFonts.poppins(

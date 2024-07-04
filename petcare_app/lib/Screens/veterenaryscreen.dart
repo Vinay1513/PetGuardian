@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:petcare_app/Screens/dashboardscreen.dart';
+import 'package:petcare_app/Screens/detailscreen.dart';
 import 'package:petcare_app/Screens/grooming.dart';
 import 'package:petcare_app/Screens/shop.dart';
 import 'package:petcare_app/Screens/trainingscreen.dart';
@@ -176,7 +177,7 @@ class _VeterenaryScreenState extends State<VeterenaryScreen> {
                 ),
                 const Spacer(),
                 Padding(
-                  padding: const EdgeInsets.only(top: 20, right: 140.0),
+                  padding: const EdgeInsets.only(top: 20, right: 70.0),
                   child: Text(
                     "See All",
                     style: GoogleFonts.poppins(
@@ -259,107 +260,116 @@ class _VeterenaryScreenState extends State<VeterenaryScreen> {
                 scrollDirection: Axis.vertical,
                 itemCount: img2.length,
                 itemBuilder: (context, index) {
-                  return Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 20),
-                        child: Container(
-                          margin: EdgeInsets.only(left: 10),
-                          height: 122,
-                          width: 327,
-                          decoration: const BoxDecoration(
-                            color: Color.fromRGBO(255, 255, 255, 1),
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                          child: Row(children: [
-                            Image.asset(img2[index]),
-                            Container(
-                              height: 87,
-                              width: 192,
-                              child: Column(children: [
-                                Text(
-                                  title2[index],
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
-                                    color: const Color.fromRGBO(0, 0, 0, 1),
-                                  ),
-                                ),
-                                Text(
-                                  subtitle[index],
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                      color: const Color.fromRGBO(
-                                        194,
-                                        195,
-                                        204,
-                                        1,
-                                      )),
-                                ),
-                                SizedBox(
-                                  height: 3,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 15.0),
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        icon[0],
-                                        color: const Color.fromRGBO(
-                                            245, 146, 69, 1),
+                  return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DetailDoctorScreen()));
+                      },
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 20),
+                            child: Container(
+                              margin: EdgeInsets.only(left: 10),
+                              height: 122,
+                              width: 327,
+                              decoration: const BoxDecoration(
+                                color: Color.fromRGBO(255, 255, 255, 1),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                              ),
+                              child: Row(children: [
+                                Image.asset(img2[index]),
+                                Container(
+                                  height: 87,
+                                  width: 192,
+                                  child: Column(children: [
+                                    Text(
+                                      title2[index],
+                                      style: GoogleFonts.poppins(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500,
+                                        color: const Color.fromRGBO(0, 0, 0, 1),
                                       ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 3.0),
-                                        child: Text(
-                                          star[index],
-                                          style: GoogleFonts.poppins(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w400,
-                                              color: const Color.fromRGBO(
-                                                194,
-                                                195,
-                                                204,
-                                                1,
-                                              )),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 10),
-                                        child: Icon(
-                                          icon[1],
+                                    ),
+                                    Text(
+                                      subtitle[index],
+                                      style: GoogleFonts.poppins(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500,
                                           color: const Color.fromRGBO(
-                                              245, 146, 69, 1),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 3.0),
-                                        child: Text(
-                                          dist[index],
-                                          style: GoogleFonts.poppins(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w400,
+                                            194,
+                                            195,
+                                            204,
+                                            1,
+                                          )),
+                                    ),
+                                    SizedBox(
+                                      height: 3,
+                                    ),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(left: 15.0),
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            icon[0],
+                                            color: const Color.fromRGBO(
+                                                245, 146, 69, 1),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 3.0),
+                                            child: Text(
+                                              star[index],
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: const Color.fromRGBO(
+                                                    194,
+                                                    195,
+                                                    204,
+                                                    1,
+                                                  )),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(left: 10),
+                                            child: Icon(
+                                              icon[1],
                                               color: const Color.fromRGBO(
-                                                194,
-                                                195,
-                                                204,
-                                                1,
-                                              )),
-                                        ),
-                                      )
-                                    ],
-                                  ),
+                                                  245, 146, 69, 1),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 3.0),
+                                            child: Text(
+                                              dist[index],
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: const Color.fromRGBO(
+                                                    194,
+                                                    195,
+                                                    204,
+                                                    1,
+                                                  )),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    )
+                                  ]),
                                 )
                               ]),
-                            )
-                          ]),
-                        ),
-                      )
-                    ],
-                  );
+                            ),
+                          )
+                        ],
+                      ));
                 },
               ),
             ),

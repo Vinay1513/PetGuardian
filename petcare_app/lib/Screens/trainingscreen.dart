@@ -104,7 +104,7 @@ class _TrainingScreenState extends State<TrainingScreen> {
                 itemCount: items.length,
                 itemBuilder: (context, index) {
                   return Container(
-                    height: 122,
+                    height: 129,
                     width: 327,
                     margin: EdgeInsets.only(top: 30, left: 40, right: 40),
                     padding: EdgeInsets.all(20),
@@ -135,7 +135,6 @@ class _TrainingScreenState extends State<TrainingScreen> {
                                   color: const Color.fromRGBO(31, 32, 41, 1),
                                 ),
                               ),
-                              SizedBox(height: 5),
                               Text(
                                 items[index]['subtitle'],
                                 style: GoogleFonts.poppins(
@@ -144,8 +143,8 @@ class _TrainingScreenState extends State<TrainingScreen> {
                                   color: const Color.fromRGBO(31, 32, 41, 1),
                                 ),
                               ),
-                              SizedBox(height: 5),
                               Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Icon(
                                     Icons.star_border_outlined,
