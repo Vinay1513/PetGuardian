@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:petcare_app/Screens/detailscreen.dart';
+
 import 'package:petcare_app/Screens/spalshscreen.dart';
 
 void main() {

@@ -65,252 +65,257 @@ class _LoginScreenState extends State<LoginScreen> {
                 width: 370,
                 child: Form(
                   key: _formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Email",
-                        style: GoogleFonts.poppins(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                          color: const Color.fromRGBO(194, 195, 204, 1),
-                        ),
-                      ),
-                      Container(
-                        height: 36,
-                        width: 315,
-                        child: TextFormField(
-                          controller: emailTextEditingController,
-                          decoration: InputDecoration(
-                            enabledBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color.fromRGBO(250, 200, 162, 1),
-                                width: 2.0,
-                              ),
-                            ),
-                            focusedBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color.fromRGBO(250, 200, 162, 1),
-                                width: 2.0,
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            hintText: "PetGuardian@gmail.com",
-                            hintStyle: const TextStyle(
-                              color: Color.fromRGBO(241, 241, 250, 1),
-                            ),
+                  child: Center(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Email",
+                          style: GoogleFonts.poppins(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            color: const Color.fromRGBO(194, 195, 204, 1),
                           ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return "Please enter email";
-                            }
+                        ),
+                        Container(
+                          height: 36,
+                          width: 327,
+                          child: TextFormField(
+                            controller: emailTextEditingController,
+                            decoration: InputDecoration(
+                              enabledBorder: const OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color.fromRGBO(250, 200, 162, 1),
+                                  width: 2.0,
+                                ),
+                              ),
+                              focusedBorder: const OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color.fromRGBO(250, 200, 162, 1),
+                                  width: 2.0,
+                                ),
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              hintText: "PetGuardian@gmail.com",
+                              hintStyle: const TextStyle(
+                                color: Color.fromRGBO(241, 241, 250, 1),
+                              ),
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return "Please enter email";
+                              }
 
-                            return null;
-                          },
-                          keyboardType: TextInputType.emailAddress,
+                              return null;
+                            },
+                            keyboardType: TextInputType.emailAddress,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        "Password",
-                        style: GoogleFonts.poppins(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                          color: const Color.fromRGBO(194, 195, 204, 1),
+                        const SizedBox(height: 10),
+                        Text(
+                          "Password",
+                          style: GoogleFonts.poppins(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            color: const Color.fromRGBO(194, 195, 204, 1),
+                          ),
                         ),
-                      ),
-                      Container(
-                        height: 36,
-                        width: 315,
-                        child: TextFormField(
-                          obscureText: _obscureText,
-                          controller: passwordTextEditingController,
-                          decoration: InputDecoration(
-                            enabledBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color.fromRGBO(250, 200, 162, 1),
-                                width: 2.0,
+                        Container(
+                          height: 36,
+                          width: 327,
+                          child: TextFormField(
+                            obscureText: _obscureText,
+                            controller: passwordTextEditingController,
+                            decoration: InputDecoration(
+                              enabledBorder: const OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color.fromRGBO(250, 200, 162, 1),
+                                  width: 2.0,
+                                ),
+                              ),
+                              focusedBorder: const OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color.fromRGBO(250, 200, 162, 1),
+                                  width: 2.0,
+                                ),
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              hintText: "*******",
+                              hintStyle: const TextStyle(
+                                color: Color.fromRGBO(241, 241, 250, 1),
+                              ),
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  _obscureText
+                                      ? Icons.visibility_off
+                                      : Icons.visibility,
+                                  color: const Color.fromRGBO(245, 146, 69, 1),
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _obscureText = !_obscureText;
+                                  });
+                                },
                               ),
                             ),
-                            focusedBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color.fromRGBO(250, 200, 162, 1),
-                                width: 2.0,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return "Please enter password";
+                              }
+                              if (value.length < 6) {
+                                return "Password must be at least 6 characters";
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+                        const SizedBox(height: 3),
+                        Container(
+                          margin: const EdgeInsets.only(left: 50),
+                          height: 30,
+                          width: 300,
+                          child: RichText(
+                            text: TextSpan(
+                              style: GoogleFonts.poppins(
+                                textStyle: const TextStyle(
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color.fromARGB(255, 51, 50, 50),
+                                ),
                               ),
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            hintText: "*******",
-                            hintStyle: const TextStyle(
-                              color: Color.fromRGBO(241, 241, 250, 1),
-                            ),
-                            suffixIcon: IconButton(
-                              icon: Icon(
-                                _obscureText
-                                    ? Icons.visibility_off
-                                    : Icons.visibility,
-                                color: const Color.fromRGBO(245, 146, 69, 1),
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  _obscureText = !_obscureText;
-                                });
-                              },
+                              children: const <TextSpan>[
+                                TextSpan(text: 'Forgot Password '),
+                                TextSpan(
+                                  text: '? Click Here',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16.0,
+                                    color: Color.fromRGBO(10, 10, 12, 1),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return "Please enter password";
-                            }
-                            if (value.length < 6) {
-                              return "Password must be at least 6 characters";
-                            }
-                            return null;
-                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(left: 40, right: 40),
+                      height: 35,
+                      width: 327,
+                      decoration: BoxDecoration(
+                        color: const Color.fromRGBO(245, 146, 69, 1),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: TextButton(
+                        onPressed: _login,
+                        child: Text(
+                          "LOGIN",
+                          style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: const Color.fromRGBO(255, 255, 255, 1),
+                          ),
                         ),
                       ),
-                      const SizedBox(height: 3),
-                      Container(
-                        margin: const EdgeInsets.only(left: 50),
-                        height: 30,
-                        width: 300,
-                        child: RichText(
-                          text: TextSpan(
-                            style: GoogleFonts.poppins(
-                              textStyle: const TextStyle(
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.w400,
-                                color: Color.fromARGB(255, 51, 50, 50),
+                    ),
+                    const Divider(
+                      height: 20,
+                      thickness: 2.0,
+                      endIndent: 90,
+                      indent: 50,
+                      color: Color.fromRGBO(245, 146, 69, 1),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(left: 40, right: 40),
+                      height: 35,
+                      width: 327,
+                      decoration: BoxDecoration(
+                        color: const Color.fromRGBO(245, 146, 69, 1),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: TextButton(
+                        onPressed: () {
+                          // Implement login with email logic here
+                        },
+                        child: Text(
+                          "LOGIN WITH EMAIL",
+                          style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: const Color.fromRGBO(255, 255, 255, 1),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Container(
+                      margin: const EdgeInsets.only(left: 40,right:40),
+                      height: 35,
+                      width: 327,
+                      decoration: BoxDecoration(
+                        color: const Color.fromRGBO(245, 146, 69, 1),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: TextButton(
+                        onPressed: () {
+                          // Implement login with Facebook logic here
+                        },
+                        child: Text(
+                          "LOGIN WITH FACEBOOK",
+                          style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: const Color.fromRGBO(255, 255, 255, 1),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(left: 40,right:40),
+                          height: 60,
+                          width: 327,
+                          child: Column(
+                            children: [
+                              Text(
+                                "By continuing you agree to our ",
+                                style: GoogleFonts.poppins(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color.fromRGBO(31, 32, 41, 1),
+                                ),
                               ),
-                            ),
-                            children: const <TextSpan>[
-                              TextSpan(text: 'Forgot Password '),
-                              TextSpan(
-                                text: '? Click Here',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16.0,
-                                  color: Color.fromRGBO(10, 10, 12, 1),
+                              Text(
+                                "Terms & Privacy Policy ",
+                                style: GoogleFonts.poppins(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color.fromRGBO(31, 32, 41, 1),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
+                  ],
                 ),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(left: 60),
-                    height: 35,
-                    width: 327,
-                    decoration: BoxDecoration(
-                      color: const Color.fromRGBO(245, 146, 69, 1),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: TextButton(
-                      onPressed: _login,
-                      child: Text(
-                        "LOGIN",
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: const Color.fromRGBO(255, 255, 255, 1),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const Divider(
-                    height: 20,
-                    thickness: 2.0,
-                    endIndent: 90,
-                    indent: 50,
-                    color: Color.fromRGBO(245, 146, 69, 1),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 60),
-                    height: 35,
-                    width: 327,
-                    decoration: BoxDecoration(
-                      color: const Color.fromRGBO(245, 146, 69, 1),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: TextButton(
-                      onPressed: () {
-                        // Implement login with email logic here
-                      },
-                      child: Text(
-                        "LOGIN WITH EMAIL",
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: const Color.fromRGBO(255, 255, 255, 1),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  Container(
-                    margin: const EdgeInsets.only(left: 60),
-                    height: 35,
-                    width: 327,
-                    decoration: BoxDecoration(
-                      color: const Color.fromRGBO(245, 146, 69, 1),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: TextButton(
-                      onPressed: () {
-                        // Implement login with Facebook logic here
-                      },
-                      child: Text(
-                        "LOGIN WITH FACEBOOK",
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: const Color.fromRGBO(255, 255, 255, 1),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(left: 50),
-                        height: 60,
-                        width: 327,
-                        child: Column(
-                          children: [
-                            Text(
-                              "By continuing you agree to our ",
-                              style: GoogleFonts.poppins(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w400,
-                                color: const Color.fromRGBO(31, 32, 41, 1),
-                              ),
-                            ),
-                            Text(
-                              "Terms & Privacy Policy ",
-                              style: GoogleFonts.poppins(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w400,
-                                color: const Color.fromRGBO(31, 32, 41, 1),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
               ),
             ],
           ),

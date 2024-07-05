@@ -194,7 +194,7 @@ class _GroomingScreenState extends State<GroomingScreen> {
                 ),
                 const Spacer(),
                 Padding(
-                  padding: const EdgeInsets.only(right: 110.0),
+                  padding: const EdgeInsets.only(right: 20.0),
                   child: Text(
                     "See All",
                     style: GoogleFonts.poppins(

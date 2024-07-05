@@ -51,7 +51,7 @@ class _ShopScreenState extends State<ShopScreen> {
                 children: [
                   Container(
                     height: 148,
-                    width: 375,
+                    width: double.maxFinite,
                     decoration: BoxDecoration(
                         color: Color.fromRGBO(245, 146, 69, 1),
                         borderRadius: BorderRadius.only(
@@ -97,7 +97,7 @@ class _ShopScreenState extends State<ShopScreen> {
                         color: const Color.fromRGBO(255, 255, 247, 1),
                       )),
                   Positioned(
-                    left: 30,
+                    left: 60,
                     top: 140,
                     child: Row(
                       children: [
@@ -157,6 +157,7 @@ class _ShopScreenState extends State<ShopScreen> {
                   return Stack(
                     children: [
                       Container(
+                        margin: EdgeInsets.only(left: 30),
                         height: 196,
                         width: 154,
                         decoration: BoxDecoration(
